@@ -30,7 +30,7 @@ app.get("/api/notes", function(req, res){
         console.log('im here')
         if (err) throw err;
 
-        // res.json(notes);
+        res.json(notes);
     });
 });
 
@@ -38,10 +38,13 @@ app.post("/api/notes", function(req, res){
     console.log(req.body);
     notes.push(req.body); 
     console.log("I got here")
-    fs.writeFile("db/db.json", JSON.stringify(notes), (err) => console.log(err));
+    fs.writeFile("db/db.json", JSON.stringify(notes), function(notes, err){
+        console.log(err);
+        res.json(notes);
+    });
     console.log("wrote the notes to the db file");
-    res.json(JSON.parse(notes));
-    console.log("Pushed notes to card?");
+    
+   
 });
 
 // app.delete("/api/note", function(req, res){
