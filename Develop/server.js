@@ -40,7 +40,7 @@ app.post("/api/notes", function(req, res){
     console.log("I got here")
     fs.writeFile("db/db.json", JSON.stringify(notes), (err) => console.log(err));
     console.log("wrote the notes to the db file");
-    res.json(JSON.stringify(notes));
+    res.json(JSON.parse(notes));
     console.log("Pushed notes to card?");
 });
 
