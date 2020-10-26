@@ -23,7 +23,7 @@ app.get("/notes", function(req, res){
 
 app.get("/api/notes", function(req, res){
     fs.readFile("db/db.json", "utf8", function(err){
-        console.log('im here');
+        
         if (err) throw err;
         res.json(notes);
     });
@@ -32,13 +32,13 @@ app.get("/api/notes", function(req, res){
 app.post("/api/notes", function(req, res){
     
     let note = {"id": notes.length + 1, "title": req.body.title, "text": req.body.text};
-    console.log(note);
+    
     if(notes[0] == null) {
        notes[0] = note;
     }else {
         notes.push(note);
     }
-    console.log('notes after push', notes);
+    
 
     fs.writeFile("db/db.json", JSON.stringify(notes), function (err)  { 
         
@@ -51,8 +51,6 @@ app.post("/api/notes", function(req, res){
     
     });
 
-    console.log("wrote the notes to the db file");
-
 });
 
 app.delete("/api/notes/:id", function(req, res){
@@ -61,7 +59,6 @@ app.delete("/api/notes/:id", function(req, res){
         
         if(parseInt(notes[i].id) === parseInt(req.params.id)){
             notes.splice(i, 1);
-            console.log(notes);
 
             fs.writeFile("db/db.json", JSON.stringify(notes), function (err)  { 
                 if(err) {

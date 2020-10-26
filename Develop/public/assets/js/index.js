@@ -36,7 +36,7 @@ const deleteNote = (id) => {
 // If there is an activeNote, display it, otherwise render empty inputs
 const renderActiveNote = () => {
   $saveNoteBtn.hide();
-console.log("in renderActiveNote");
+
   if (activeNote.id) {
     $noteTitle.attr("readonly", true);
     $noteText.attr("readonly", true);
@@ -83,8 +83,6 @@ const handleNoteDelete = function (event) {
 // Sets the activeNote and displays it
 const handleNoteView = function () {
   activeNote = $(this).data();
-  console.log(activeNote);
-  console.log("In handleNoteView");
   renderActiveNote();
 };
 
@@ -131,7 +129,6 @@ const renderNoteList = (notes) => {
   }
   
   notes.forEach((note) => {
-    console.log('note is', note);
     const $li = create$li(note.title).data(note);
     noteListItems.push($li);
   });
