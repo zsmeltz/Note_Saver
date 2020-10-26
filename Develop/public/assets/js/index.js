@@ -1,3 +1,4 @@
+
 const $noteTitle = $(".note-title");
 const $noteText = $(".note-textarea");
 const $saveNoteBtn = $(".save-note");
@@ -130,6 +131,7 @@ const renderNoteList = (notes) => {
   }
   
   notes.forEach((note) => {
+    console.log('note is', note);
     const $li = create$li(note.title).data(note);
     noteListItems.push($li);
   });
