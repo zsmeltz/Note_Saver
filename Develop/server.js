@@ -10,7 +10,6 @@ app.use(express.json());
 
 var notes = [];
 
-
 app.get("/", function(req, res){
     res.header("Content-Type", "text/html");
     res.sendFile(path.join(__dirname, "/public/index.html"));
@@ -73,6 +72,6 @@ app.delete("/api/notes/:id", function(req, res){
     }
 })
 
-
+console.log("Im making this to see if commit works")
 
 app.listen(PORT,() => console.log("Listening on port " + PORT));
